@@ -3,6 +3,7 @@ import confetti from "canvas-confetti";
 import ChristmasBox from "@/components/ChristmasBox";
 import QuizDialog from "@/components/QuizDialog";
 import GiftReveal from "@/components/GiftReveal";
+import GoldenBoxReveal from "@/components/GoldenBoxReveal";
 import Scoreboard from "@/components/Scoreboard";
 import { Box, BoxState } from "@/types/box";
 import boxesData from "@/data/boxes.json";
@@ -15,6 +16,7 @@ const Index = () => {
   const [isQuizOpen, setIsQuizOpen] = useState(false);
   const [revealedGift, setRevealedGift] = useState<string | null>(null);
   const [isGiftOpen, setIsGiftOpen] = useState(false);
+  const [isGoldenReveal, setIsGoldenReveal] = useState(false);
 
   // Initialize and shuffle boxes on mount
   useEffect(() => {
@@ -34,6 +36,8 @@ const Index = () => {
   const handleCorrectAnswer = (gift: string) => {
     if (!selectedBox) return;
     
+    const isGolden = selectedBox.isGolden;
+    
     // Update box state
     setBoxStates(prev => 
       prev.map(state => 
@@ -47,21 +51,21 @@ const Index = () => {
     setIsQuizOpen(false);
     
     // Trigger confetti
-    const duration = 3000;
+    const duration = isGolden ? 5000 : 3000;
     const end = Date.now() + duration;
 
-    const colors = ['#DC2626', '#16A34A', '#EAB308'];
+    const colors = isGolden ? ['#EAB308', '#FCD34D', '#FBBF24'] : ['#DC2626', '#16A34A', '#EAB308'];
     
     (function frame() {
       confetti({
-        particleCount: 3,
+        particleCount: isGolden ? 5 : 3,
         angle: 60,
         spread: 55,
         origin: { x: 0 },
         colors: colors,
       });
       confetti({
-        particleCount: 3,
+        particleCount: isGolden ? 5 : 3,
         angle: 120,
         spread: 55,
         origin: { x: 1 },
@@ -73,17 +77,31 @@ const Index = () => {
       }
     })();
     
-    // Show gift reveal
-    setTimeout(() => {
-      setRevealedGift(gift);
-      setIsGiftOpen(true);
-    }, 500);
+    // Show golden box reveal first if it's golden
+    if (isGolden) {
+      setTimeout(() => {
+        setIsGoldenReveal(true);
+      }, 500);
+      
+      setTimeout(() => {
+        setIsGoldenReveal(false);
+        setRevealedGift(gift);
+        setIsGiftOpen(true);
+      }, 3000);
+    } else {
+      // Show gift reveal directly for regular boxes
+      setTimeout(() => {
+        setRevealedGift(gift);
+        setIsGiftOpen(true);
+      }, 500);
+    }
   };
 
-  const unopenedGoldenGifts = boxes
+  const totalGoldenBoxes = boxes.filter(box => box.isGolden).length;
+  const openedGoldenGifts = boxes
     .filter(box => {
       const state = boxStates.find(s => s.id === box.id);
-      return box.isGolden && !state?.isOpened;
+      return box.isGolden && state?.isOpened;
     })
     .map(box => box.gift);
 
@@ -117,7 +135,7 @@ const Index = () => {
                 <ChristmasBox
                   key={box.id}
                   number={index + 1}
-                  isGolden={box.isGolden}
+                  position={index + 1}
                   isOpened={state?.isOpened || false}
                   onClick={() => handleBoxClick(box)}
                 />
@@ -128,7 +146,10 @@ const Index = () => {
       </main>
 
       {/* Scoreboard */}
-      <Scoreboard unopenedGoldenGifts={unopenedGoldenGifts} />
+      <Scoreboard 
+        openedGoldenGifts={openedGoldenGifts}
+        totalGoldenBoxes={totalGoldenBoxes}
+      />
 
       {/* Dialogs */}
       <QuizDialog
@@ -136,6 +157,11 @@ const Index = () => {
         isOpen={isQuizOpen}
         onClose={() => setIsQuizOpen(false)}
         onCorrect={handleCorrectAnswer}
+      />
+
+      <GoldenBoxReveal
+        isOpen={isGoldenReveal}
+        onClose={() => setIsGoldenReveal(false)}
       />
 
       <GiftReveal

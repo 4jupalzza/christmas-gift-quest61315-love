@@ -1,14 +1,17 @@
-import { Gift, Sparkles } from "lucide-react";
+import { Gift } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 interface ChristmasBoxProps {
   number: number;
-  isGolden: boolean;
+  position: number;
   isOpened: boolean;
   onClick: () => void;
 }
 
-const ChristmasBox = ({ number, isGolden, isOpened, onClick }: ChristmasBoxProps) => {
+const ChristmasBox = ({ number, position, isOpened, onClick }: ChristmasBoxProps) => {
+  // Checkerboard pattern: alternate red and green based on position
+  const isRedBox = (Math.floor((position - 1) / 5) + (position - 1)) % 2 === 0;
+  
   return (
     <button
       onClick={onClick}
@@ -18,19 +21,12 @@ const ChristmasBox = ({ number, isGolden, isOpened, onClick }: ChristmasBoxProps
         "flex flex-col items-center justify-center gap-2",
         "shadow-lg hover:shadow-2xl",
         "disabled:cursor-not-allowed disabled:opacity-60",
-        isGolden && !isOpened && "bg-box-gold border-christmas-gold-light hover:bg-box-gold-hover animate-shimmer",
-        isGolden && !isOpened && "bg-gradient-to-br from-box-gold via-christmas-gold-light to-box-gold",
-        isGolden && !isOpened && "bg-[length:200%_100%]",
-        !isGolden && !isOpened && "bg-box-regular border-primary hover:bg-box-regular-hover",
+        !isOpened && isRedBox && "bg-box-regular border-primary hover:bg-box-regular-hover",
+        !isOpened && !isRedBox && "bg-secondary border-secondary-foreground hover:bg-secondary/80",
         isOpened && "bg-box-opened border-muted",
         !isOpened && "hover:scale-105 hover:-translate-y-2"
       )}
     >
-      {/* Sparkle effect for golden boxes */}
-      {isGolden && !isOpened && (
-        <Sparkles className="absolute top-2 right-2 w-5 h-5 text-christmas-snow animate-pulse" />
-      )}
-      
       {/* Box number */}
       <span className={cn(
         "text-4xl font-bold",
