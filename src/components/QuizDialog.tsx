@@ -3,7 +3,8 @@ import { Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, D
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Box } from "@/types/box";
-import { Gift } from "lucide-react";
+import { Gift, Sparkles } from "lucide-react";
+import { cn } from "@/lib/utils";
 
 interface QuizDialogProps {
   box: Box | null;
@@ -39,22 +40,45 @@ const QuizDialog = ({ box, isOpen, onClose, onCorrect }: QuizDialogProps) => {
     onClose();
   };
 
+  const isGolden = box?.isGolden || false;
+
   return (
     <Dialog open={isOpen} onOpenChange={handleClose}>
-      <DialogContent className="sm:max-w-md bg-card border-border">
+      <DialogContent className={cn(
+        "sm:max-w-md border-4",
+        isGolden 
+          ? "bg-gradient-to-br from-box-gold via-christmas-gold-light to-box-gold border-christmas-gold-light shadow-2xl shadow-accent/50" 
+          : "bg-card border-border"
+      )}>
         <DialogHeader>
-          <DialogTitle className="flex items-center gap-2 text-2xl text-foreground">
-            <Gift className="w-6 h-6 text-accent" />
-            {box?.isGolden ? "⭐ 골드 박스 ⭐" : "크리스마스 퀴즈"}
+          <DialogTitle className={cn(
+            "flex items-center gap-2 text-2xl",
+            isGolden ? "text-accent-foreground" : "text-foreground"
+          )}>
+            {isGolden && <Sparkles className="w-6 h-6 animate-pulse" />}
+            <Gift className="w-6 h-6" />
+            {isGolden ? "⭐ 골드 박스 ⭐" : "크리스마스 퀴즈"}
+            {isGolden && <Sparkles className="w-6 h-6 animate-pulse" />}
           </DialogTitle>
-          <DialogDescription className="text-base text-card-foreground/80">
+          <DialogDescription className={cn(
+            "text-base",
+            isGolden ? "text-accent-foreground/90 font-medium" : "text-card-foreground/80"
+          )}>
             정답을 맞춰서 선물을 받으세요!
           </DialogDescription>
         </DialogHeader>
         
         <div className="space-y-4 py-4">
-          <div className="p-4 bg-secondary rounded-lg">
-            <p className="text-lg font-medium text-secondary-foreground">
+          <div className={cn(
+            "p-4 rounded-lg",
+            isGolden 
+              ? "bg-accent-foreground/10 border-2 border-accent-foreground/30" 
+              : "bg-secondary"
+          )}>
+            <p className={cn(
+              "text-lg font-medium",
+              isGolden ? "text-accent-foreground" : "text-secondary-foreground"
+            )}>
               {box?.question}
             </p>
           </div>
@@ -64,12 +88,15 @@ const QuizDialog = ({ box, isOpen, onClose, onCorrect }: QuizDialogProps) => {
             value={answer}
             onChange={(e) => setAnswer(e.target.value)}
             onKeyDown={(e) => e.key === "Enter" && handleSubmit()}
-            className={error ? "border-destructive" : ""}
+            className={cn(
+              error && "border-destructive",
+              isGolden && "border-accent-foreground/30 bg-accent-foreground/5"
+            )}
             autoFocus
           />
           
           {error && (
-            <p className="text-sm text-destructive">
+            <p className="text-sm text-destructive font-semibold">
               틀렸습니다! 다시 시도해보세요.
             </p>
           )}
@@ -81,7 +108,11 @@ const QuizDialog = ({ box, isOpen, onClose, onCorrect }: QuizDialogProps) => {
           </Button>
           <Button 
             onClick={handleSubmit}
-            className="bg-primary hover:bg-primary/90"
+            className={cn(
+              isGolden 
+                ? "bg-accent-foreground text-accent hover:bg-accent-foreground/90" 
+                : "bg-primary hover:bg-primary/90"
+            )}
           >
             확인
           </Button>

@@ -98,10 +98,18 @@ const Index = () => {
   };
 
   const totalGoldenBoxes = boxes.filter(box => box.isGolden).length;
+  
   const openedGoldenGifts = boxes
     .filter(box => {
       const state = boxStates.find(s => s.id === box.id);
       return box.isGolden && state?.isOpened;
+    })
+    .map(box => box.gift);
+
+  const unopenedGoldenGifts = boxes
+    .filter(box => {
+      const state = boxStates.find(s => s.id === box.id);
+      return box.isGolden && !state?.isOpened;
     })
     .map(box => box.gift);
 
@@ -148,6 +156,7 @@ const Index = () => {
       {/* Scoreboard */}
       <Scoreboard 
         openedGoldenGifts={openedGoldenGifts}
+        unopenedGoldenGifts={unopenedGoldenGifts}
         totalGoldenBoxes={totalGoldenBoxes}
       />
 
