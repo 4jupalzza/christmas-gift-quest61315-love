@@ -1,0 +1,177 @@
+[
+  {
+    "id": 1,
+    "question": "산타클로스가 사는 곳은?",
+    "answer": "북극",
+    "gift": "🎁 떡볶이 1인분",
+    "isGolden": false
+  },
+  {
+    "id": 2,
+    "question": "크리스마스는 몇 월 며칠?",
+    "answer": "12월25일",
+    "gift": "☕ 커피 쿠폰",
+    "isGolden": true
+  },
+  {
+    "id": 3,
+    "question": "루돌프는 무슨 동물?",
+    "answer": "순록",
+    "gift": "🍰 케이크 조각",
+    "isGolden": false
+  },
+  {
+    "id": 4,
+    "question": "크리스마스 트리 꼭대기에 다는 것은?",
+    "answer": "별",
+    "gift": "🎫 영화 관람권",
+    "isGolden": true
+  },
+  {
+    "id": 5,
+    "question": "산타가 타고 다니는 것은?",
+    "answer": "썰매",
+    "gift": "🍕 피자 1판",
+    "isGolden": false
+  },
+  {
+    "id": 6,
+    "question": "크리스마스 캐롤 중 '징글벨'의 영어 이름은?",
+    "answer": "jinglebell",
+    "gift": "🎮 게임 쿠폰 5000원",
+    "isGolden": false
+  },
+  {
+    "id": 7,
+    "question": "선물을 받기 위해 매달아 두는 양말은?",
+    "answer": "스타킹",
+    "gift": "🍔 햄버거 세트",
+    "isGolden": true
+  },
+  {
+    "id": 8,
+    "question": "크리스마스 트리를 장식하는 반짝이는 것은?",
+    "answer": "전구",
+    "gift": "🎧 이어폰",
+    "isGolden": false
+  },
+  {
+    "id": 9,
+    "question": "산타클로스의 빨간 옷 색깔은?",
+    "answer": "빨강",
+    "gift": "📚 도서 상품권 1만원",
+    "isGolden": false
+  },
+  {
+    "id": 10,
+    "question": "크리스마스에 주고받는 것은?",
+    "answer": "선물",
+    "gift": "🎨 문구 세트",
+    "isGolden": false
+  },
+  {
+    "id": 11,
+    "question": "눈사람을 만들 때 필요한 것은?",
+    "answer": "눈",
+    "gift": "🍜 라면 박스",
+    "isGolden": false
+  },
+  {
+    "id": 12,
+    "question": "크리스마스 노래를 부르는 것을 무엇이라 하나?",
+    "answer": "캐롤",
+    "gift": "🎵 음악 스트리밍 1개월",
+    "isGolden": true
+  },
+  {
+    "id": 13,
+    "question": "산타가 선물을 넣고 다니는 가방은?",
+    "answer": "자루",
+    "gift": "🧸 인형",
+    "isGolden": false
+  },
+  {
+    "id": 14,
+    "question": "크리스마스 이브는 12월 며칠?",
+    "answer": "12월24일",
+    "gift": "🍿 팝콘 세트",
+    "isGolden": false
+  },
+  {
+    "id": 15,
+    "question": "산타가 집에 들어오는 통로는?",
+    "answer": "굴뚝",
+    "gift": "🎁 랜덤 박스",
+    "isGolden": false
+  },
+  {
+    "id": 16,
+    "question": "크리스마스 트리로 사용하는 나무는?",
+    "answer": "소나무",
+    "gift": "🥤 음료수 기프티콘",
+    "isGolden": false
+  },
+  {
+    "id": 17,
+    "question": "겨울에 하늘에서 내리는 하얀 것은?",
+    "answer": "눈",
+    "gift": "🍦 아이스크림 쿠폰",
+    "isGolden": false
+  },
+  {
+    "id": 18,
+    "question": "크리스마스의 상징 색은 빨강과?",
+    "answer": "초록",
+    "gift": "💎 액세서리",
+    "isGolden": true
+  },
+  {
+    "id": 19,
+    "question": "산타의 코가 빨간 순록의 이름은?",
+    "answer": "루돌프",
+    "gift": "🎪 놀이공원 이용권",
+    "isGolden": false
+  },
+  {
+    "id": 20,
+    "question": "12월의 영어 이름은?",
+    "answer": "december",
+    "gift": "🧦 양말 세트",
+    "isGolden": false
+  },
+  {
+    "id": 21,
+    "question": "크리스마스 케이크에 올라가는 과일은?",
+    "answer": "딸기",
+    "gift": "🍓 과일 바구니",
+    "isGolden": false
+  },
+  {
+    "id": 22,
+    "question": "산타의 수염 색깔은?",
+    "answer": "하얀색",
+    "gift": "🎀 리본 세트",
+    "isGolden": false
+  },
+  {
+    "id": 23,
+    "question": "크리스마스 장식에 사용되는 반짝이는 종이는?",
+    "answer": "은박지",
+    "gift": "✨ LED 조명",
+    "isGolden": false
+  },
+  {
+    "id": 24,
+    "question": "착한 아이들에게 산타가 주는 것은?",
+    "answer": "선물",
+    "gift": "🎉 파티 용품 세트",
+    "isGolden": false
+  },
+  {
+    "id": 25,
+    "question": "크리스마스에 울리는 소리는?",
+    "answer": "종소리",
+    "gift": "🔔 크리스마스 벨",
+    "isGolden": false
+  }
+]
