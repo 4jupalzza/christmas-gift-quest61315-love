@@ -9,8 +9,10 @@ interface ChristmasBoxProps {
 }
 
 const ChristmasBox = ({ number, position, isOpened, onClick }: ChristmasBoxProps) => {
-  // Checkerboard pattern: alternate red and green based on position
-  const isRedBox = (Math.floor((position - 1) / 5) + (position - 1)) % 2 === 0;
+  // Checkerboard pattern: alternate red and green
+  const row = Math.floor((position - 1) / 5);
+  const col = (position - 1) % 5;
+  const isRedBox = (row + col) % 2 === 0;
   
   return (
     <button
