@@ -10,8 +10,8 @@ interface ChristmasBoxProps {
 
 const ChristmasBox = ({ number, position, isOpened, onClick }: ChristmasBoxProps) => {
   // Checkerboard pattern: alternate red and green
-  const row = Math.floor((position - 1) / 5);
-  const col = (position - 1) % 5;
+  const row = Math.floor((position - 1) / 8);
+  const col = (position - 1) % 8;
   const isRedBox = (row + col) % 2 === 0;
   
   return (
@@ -19,19 +19,19 @@ const ChristmasBox = ({ number, position, isOpened, onClick }: ChristmasBoxProps
       onClick={onClick}
       disabled={isOpened}
       className={cn(
-        "relative aspect-square rounded-lg border-4 transition-all duration-300",
-        "flex flex-col items-center justify-center gap-2",
-        "shadow-lg hover:shadow-2xl",
+        "relative rounded-lg border-4 transition-all duration-300",
+        "flex flex-col items-center justify-center gap-1",
+        "shadow-lg hover:shadow-2xl h-20",
         "disabled:cursor-not-allowed disabled:opacity-60",
         !isOpened && isRedBox && "bg-box-regular border-primary hover:bg-box-regular-hover",
         !isOpened && !isRedBox && "bg-secondary border-secondary-foreground hover:bg-secondary/80",
         isOpened && "bg-box-opened border-muted",
-        !isOpened && "hover:scale-105 hover:-translate-y-2"
+        !isOpened && "hover:scale-105 hover:-translate-y-1"
       )}
     >
       {/* Box number */}
       <span className={cn(
-        "text-4xl font-bold",
+        "text-2xl font-bold",
         isOpened ? "text-muted-foreground" : "text-christmas-snow drop-shadow-lg"
       )}>
         {number}
@@ -39,7 +39,7 @@ const ChristmasBox = ({ number, position, isOpened, onClick }: ChristmasBoxProps
       
       {/* Gift icon */}
       <Gift className={cn(
-        "w-8 h-8",
+        "w-5 h-5",
         isOpened ? "text-muted-foreground" : "text-christmas-snow"
       )} />
       

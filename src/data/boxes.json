@@ -173,5 +173,54 @@
     "answer": "종소리",
     "gift": "🔔 크리스마스 벨",
     "isGolden": false
+  },
+  {
+    "id": 26,
+    "question": "겨울철 따뜻하게 입는 옷은?",
+    "answer": "패딩",
+    "gift": "🧥 의류 상품권",
+    "isGolden": false
+  },
+  {
+    "id": 27,
+    "question": "크리스마스에 마시는 따뜻한 음료는?",
+    "answer": "핫초코",
+    "gift": "☕ 카페 쿠폰 1만원",
+    "isGolden": true
+  },
+  {
+    "id": 28,
+    "question": "눈사람의 눈을 만드는 재료는?",
+    "answer": "석탄",
+    "gift": "⛄ 눈사람 키트",
+    "isGolden": false
+  },
+  {
+    "id": 29,
+    "question": "크리스마스 파티에서 터뜨리는 것은?",
+    "answer": "크래커",
+    "gift": "🎊 파티 크래커",
+    "isGolden": false
+  },
+  {
+    "id": 30,
+    "question": "산타가 좋아하는 간식은?",
+    "answer": "쿠키",
+    "gift": "🍪 쿠키 세트",
+    "isGolden": false
+  },
+  {
+    "id": 31,
+    "question": "크리스마스 리스는 무슨 모양?",
+    "answer": "원",
+    "gift": "🎀 크리스마스 리스",
+    "isGolden": false
+  },
+  {
+    "id": 32,
+    "question": "겨울에 손을 따뜻하게 하는 것은?",
+    "answer": "장갑",
+    "gift": "🧤 장갑 세트",
+    "isGolden": false
   }
 ]

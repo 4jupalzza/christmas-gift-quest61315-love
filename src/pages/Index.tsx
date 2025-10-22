@@ -126,7 +126,7 @@ const Index = () => {
       {/* Header */}
       <header className="py-6 px-8 text-center relative z-10">
         <h1 className="text-5xl font-bold text-foreground mb-2 drop-shadow-lg">
-          🎄 크리스마스 어드벤트 캘린더 🎄
+          🎮 61315 GAMELAB 어드벤트 캘린더 🎮
         </h1>
         <p className="text-xl text-foreground/80">
           상자를 열고 퀴즈를 풀어 선물을 받으세요!
@@ -135,8 +135,8 @@ const Index = () => {
 
       {/* Main content */}
       <main className="flex-1 flex items-center justify-center px-8 pb-4 relative z-10">
-        <div className="w-full max-w-6xl">
-          <div className="grid grid-cols-5 gap-4">
+        <div className="w-full max-w-7xl">
+          <div className="grid grid-cols-8 gap-3">
             {boxes.map((box, index) => {
               const state = boxStates.find(s => s.id === box.id);
               return (
