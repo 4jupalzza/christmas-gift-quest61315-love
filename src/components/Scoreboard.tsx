@@ -19,9 +19,6 @@ const Scoreboard = ({ openedGoldenGifts, unopenedGoldenGifts, totalGoldenBoxes }
               숨겨진 골드 박스 선물
             </h2>
             <Sparkles className="w-6 h-6 text-accent animate-pulse" />
-            <span className="text-lg text-muted-foreground ml-auto">
-              {unopenedGoldenGifts.length > 0 ? `🎁 ${unopenedGoldenGifts.length}개의 골드 박스가 숨어있습니다!` : ""}
-            </span>
           </div>
           
           <div className="flex flex-wrap gap-3">
