@@ -208,6 +208,8 @@ const Index = () => {
       <GiftReveal
         gift={revealedGift}
         isOpen={isGiftOpen}
+        isGolden={selectedBox?.isGolden}
+        isSpecial={selectedBox?.isSpecial}
         onClose={() => {
           setIsGiftOpen(false);
           setRevealedGift(null);
