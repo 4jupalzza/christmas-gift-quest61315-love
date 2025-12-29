@@ -51,6 +51,11 @@ All colors MUST be HSL.
     --box-gold: 45 90% 55%;
     --box-gold-hover: 45 95% 65%;
     --box-opened: 145 20% 50%;
+    
+    /* Platinum/Special colors */
+    --platinum: 220 15% 75%;
+    --platinum-light: 220 20% 85%;
+    --platinum-dark: 220 10% 50%;
   }
 }
 

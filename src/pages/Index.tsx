@@ -4,6 +4,7 @@ import ChristmasBox from "@/components/ChristmasBox";
 import QuizDialog from "@/components/QuizDialog";
 import GiftReveal from "@/components/GiftReveal";
 import GoldenBoxReveal from "@/components/GoldenBoxReveal";
+import SpecialBoxReveal from "@/components/SpecialBoxReveal";
 import Scoreboard from "@/components/Scoreboard";
 import { Box, BoxState } from "@/types/box";
 import boxesData from "@/data/boxes.json";
@@ -17,10 +18,11 @@ const Index = () => {
   const [revealedGift, setRevealedGift] = useState<string | null>(null);
   const [isGiftOpen, setIsGiftOpen] = useState(false);
   const [isGoldenReveal, setIsGoldenReveal] = useState(false);
+  const [isSpecialReveal, setIsSpecialReveal] = useState(false);
 
   // Initialize and shuffle boxes on mount
   useEffect(() => {
-    const shuffled = [...boxesData].sort(() => Math.random() - 0.5);
+    const shuffled = [...boxesData].sort(() => Math.random() - 0.5) as Box[];
     setBoxes(shuffled);
     setBoxStates(shuffled.map(box => ({ id: box.id, isOpened: false })));
   }, []);
@@ -37,6 +39,7 @@ const Index = () => {
     if (!selectedBox) return;
     
     const isGolden = selectedBox.isGolden;
+    const isSpecial = selectedBox.isSpecial;
     
     // Update box state
     setBoxStates(prev => 
@@ -51,21 +54,25 @@ const Index = () => {
     setIsQuizOpen(false);
     
     // Trigger confetti
-    const duration = isGolden ? 5000 : 3000;
+    const duration = isGolden || isSpecial ? 5000 : 3000;
     const end = Date.now() + duration;
 
-    const colors = isGolden ? ['#EAB308', '#FCD34D', '#FBBF24'] : ['#DC2626', '#16A34A', '#EAB308'];
+    const colors = isSpecial 
+      ? ['#C0C0C0', '#E5E4E2', '#A0A0A0', '#D4D4D4']
+      : isGolden 
+        ? ['#EAB308', '#FCD34D', '#FBBF24'] 
+        : ['#DC2626', '#16A34A', '#EAB308'];
     
     (function frame() {
       confetti({
-        particleCount: isGolden ? 5 : 3,
+        particleCount: isGolden || isSpecial ? 5 : 3,
         angle: 60,
         spread: 55,
         origin: { x: 0 },
         colors: colors,
       });
       confetti({
-        particleCount: isGolden ? 5 : 3,
+        particleCount: isGolden || isSpecial ? 5 : 3,
         angle: 120,
         spread: 55,
         origin: { x: 1 },
@@ -77,8 +84,19 @@ const Index = () => {
       }
     })();
     
-    // Show golden box reveal first if it's golden
-    if (isGolden) {
+    // Show special box reveal first if it's special
+    if (isSpecial) {
+      setTimeout(() => {
+        setIsSpecialReveal(true);
+      }, 500);
+      
+      setTimeout(() => {
+        setIsSpecialReveal(false);
+        setRevealedGift(gift);
+        setIsGiftOpen(true);
+      }, 3000);
+    } else if (isGolden) {
+      // Show golden box reveal first if it's golden
       setTimeout(() => {
         setIsGoldenReveal(true);
       }, 500);
@@ -136,7 +154,7 @@ const Index = () => {
       {/* Main content */}
       <main className="flex-1 flex items-center justify-center px-8 pb-4 relative z-10">
         <div className="w-full max-w-7xl">
-          <div className="grid grid-cols-8 gap-3">
+          <div className="grid grid-cols-6 gap-3">
             {boxes.map((box, index) => {
               const state = boxStates.find(s => s.id === box.id);
               return (
@@ -171,6 +189,11 @@ const Index = () => {
       <GoldenBoxReveal
         isOpen={isGoldenReveal}
         onClose={() => setIsGoldenReveal(false)}
+      />
+
+      <SpecialBoxReveal
+        isOpen={isSpecialReveal}
+        onClose={() => setIsSpecialReveal(false)}
       />
 
       <GiftReveal
