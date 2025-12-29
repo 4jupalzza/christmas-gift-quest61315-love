@@ -198,7 +198,7 @@ const QuizDialog = ({ box, isOpen, onClose, onCorrect }: QuizDialogProps) => {
                         ? "bg-horse-bronze border-horse-gold text-horse-cream" 
                         : "bg-primary/20 border-primary text-foreground"
                       : isGolden
-                        ? "border-accent-foreground/30 text-accent-foreground hover:bg-horse-bronze/50"
+                        ? "border-horse-gold/50 text-horse-cream bg-horse-bronze/30 hover:bg-horse-bronze/50"
                         : "border-border text-foreground hover:bg-secondary",
                     error && selectedOption === index + 1 && "border-destructive bg-destructive/20"
                   )}
