@@ -55,12 +55,8 @@ const GoldenBoxReveal = ({ isOpen, onClose }: GoldenBoxRevealProps) => {
     <Dialog open={isOpen} onOpenChange={onClose}>
       <DialogContent className="sm:max-w-lg bg-gradient-to-br from-box-gold via-horse-gold-light to-box-gold border-4 border-horse-gold-light shadow-2xl shadow-accent/50">
         <div className="flex flex-col items-center justify-center space-y-6 py-8">
-          <div className="relative">
+          <div>
             <Trophy className="w-24 h-24 text-accent-foreground animate-bounce" />
-            <Sparkles className="absolute -top-2 -right-2 w-8 h-8 text-accent-foreground animate-spin" />
-            <Sparkles className="absolute -bottom-2 -left-2 w-8 h-8 text-accent-foreground animate-spin" style={{ animationDelay: "0.5s" }} />
-            <Sparkles className="absolute top-1/2 -right-4 w-6 h-6 text-accent-foreground animate-pulse" style={{ animationDelay: "0.25s" }} />
-            <Sparkles className="absolute top-1/2 -left-4 w-6 h-6 text-accent-foreground animate-pulse" style={{ animationDelay: "0.75s" }} />
           </div>
           <h2 className="text-4xl font-bold text-accent-foreground animate-bounce drop-shadow-lg text-center">
             🎉 골드박스를 발견했습니다! 🎉
