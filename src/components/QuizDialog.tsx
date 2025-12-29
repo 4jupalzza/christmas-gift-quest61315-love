@@ -195,10 +195,10 @@ const QuizDialog = ({ box, isOpen, onClose, onCorrect }: QuizDialogProps) => {
                     "w-full justify-start text-left h-auto py-3 px-4",
                     selectedOption === index + 1 
                       ? isGolden 
-                        ? "bg-accent-foreground/20 border-accent-foreground text-accent-foreground" 
+                        ? "bg-horse-bronze border-horse-gold text-horse-cream" 
                         : "bg-primary/20 border-primary text-foreground"
                       : isGolden
-                        ? "border-accent-foreground/30 text-accent-foreground hover:bg-accent-foreground/10"
+                        ? "border-accent-foreground/30 text-accent-foreground hover:bg-horse-bronze/50"
                         : "border-border text-foreground hover:bg-secondary",
                     error && selectedOption === index + 1 && "border-destructive bg-destructive/20"
                   )}
