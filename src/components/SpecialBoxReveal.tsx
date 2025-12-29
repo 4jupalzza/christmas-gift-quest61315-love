@@ -59,8 +59,8 @@ const SpecialBoxReveal = ({ isOpen, onClose }: SpecialBoxRevealProps) => {
         onEscapeKeyDown={(e) => e.preventDefault()}
       >
         <div className="flex flex-col items-center justify-center space-y-6 py-8">
-          <div>
-            <Diamond className="w-24 h-24 text-platinum-dark animate-bounce" />
+          <div className="text-8xl animate-bounce">
+            💎
           </div>
           <h2 className="text-4xl font-bold text-platinum-dark animate-bounce drop-shadow-lg text-center">
             💎 스페셜 박스를 발견했습니다! 💎
