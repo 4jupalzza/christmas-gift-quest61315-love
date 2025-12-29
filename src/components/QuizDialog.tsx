@@ -235,12 +235,10 @@ const QuizDialog = ({ box, isOpen, onClose, onCorrect }: QuizDialogProps) => {
         </div>
         
         <DialogFooter>
-          <Button variant="outline" onClick={handleClose}>
-            취소
-          </Button>
           <Button 
             onClick={handleSubmit}
             className={cn(
+              "w-full",
               isGolden 
                 ? "bg-accent-foreground text-accent hover:bg-accent-foreground/90" 
                 : "bg-primary hover:bg-primary/90"
