@@ -62,12 +62,11 @@ const GoldenBoxReveal = ({ isOpen, onClose }: GoldenBoxRevealProps) => {
             <Sparkles className="absolute top-1/2 -right-4 w-6 h-6 text-accent-foreground animate-pulse" style={{ animationDelay: "0.25s" }} />
             <Sparkles className="absolute top-1/2 -left-4 w-6 h-6 text-accent-foreground animate-pulse" style={{ animationDelay: "0.75s" }} />
           </div>
-          <h2 className="text-4xl font-bold text-accent-foreground animate-bounce drop-shadow-lg">
-            🎉 골드 박스 발견! 🎉
+          <h2 className="text-4xl font-bold text-accent-foreground animate-bounce drop-shadow-lg text-center">
+            🎉 특별한 골드박스를 발견했습니다! 🎉
           </h2>
           <p className="text-xl font-semibold text-accent-foreground text-center">
-            축하합니다!<br />
-            특별한 선물을 받으셨습니다!
+            더 어려운 문제와 더 큰 선물이 기다리고 있습니다!
           </p>
         </div>
       </DialogContent>
