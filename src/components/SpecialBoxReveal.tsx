@@ -53,21 +53,17 @@ const SpecialBoxReveal = ({ isOpen, onClose }: SpecialBoxRevealProps) => {
 
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
-      <DialogContent className="sm:max-w-md bg-gradient-to-br from-platinum via-platinum-light to-platinum border-4 border-platinum-light shadow-2xl shadow-platinum/50">
+      <DialogContent className="sm:max-w-lg bg-gradient-to-br from-platinum via-platinum-light to-platinum border-4 border-platinum-light shadow-2xl shadow-platinum/50">
         <div className="flex flex-col items-center justify-center space-y-6 py-8">
-          <div className="relative">
+          <div>
             <Diamond className="w-24 h-24 text-platinum-dark animate-bounce" />
-            <Sparkles className="absolute -top-2 -right-2 w-8 h-8 text-platinum-dark animate-spin" />
-            <Sparkles className="absolute -bottom-2 -left-2 w-8 h-8 text-platinum-dark animate-spin" style={{ animationDelay: "0.5s" }} />
-            <Sparkles className="absolute top-1/2 -right-4 w-6 h-6 text-platinum-dark animate-pulse" style={{ animationDelay: "0.25s" }} />
-            <Sparkles className="absolute top-1/2 -left-4 w-6 h-6 text-platinum-dark animate-pulse" style={{ animationDelay: "0.75s" }} />
           </div>
-          <h2 className="text-4xl font-bold text-platinum-dark animate-bounce drop-shadow-lg">
-            💎 스페셜 박스 발견! 💎
+          <h2 className="text-4xl font-bold text-platinum-dark animate-bounce drop-shadow-lg text-center">
+            💎 스페셜 박스를 발견했습니다! 💎
           </h2>
           <p className="text-xl font-semibold text-platinum-dark text-center">
-            와!! 축하합니다!!<br />
-            비밀의 스페셜 선물을 받으셨습니다!
+            특별한 선물이 기다리고 있습니다!<br />
+            모두 집중해주세요!
           </p>
         </div>
       </DialogContent>

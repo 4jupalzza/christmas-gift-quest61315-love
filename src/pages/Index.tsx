@@ -40,6 +40,13 @@ const Index = () => {
         setIsGoldenReveal(false);
         setIsQuizOpen(true);
       }, 2500);
+    } else if (box.isSpecial) {
+      // Show special box reveal first if it's special
+      setIsSpecialReveal(true);
+      setTimeout(() => {
+        setIsSpecialReveal(false);
+        setIsQuizOpen(true);
+      }, 2500);
     } else {
       setIsQuizOpen(true);
     }
@@ -94,17 +101,12 @@ const Index = () => {
       }
     })();
     
-    // Show special box reveal first if it's special
+    // For special boxes, just show gift reveal (special reveal already shown on click)
     if (isSpecial) {
       setTimeout(() => {
-        setIsSpecialReveal(true);
-      }, 500);
-      
-      setTimeout(() => {
-        setIsSpecialReveal(false);
         setRevealedGift(gift);
         setIsGiftOpen(true);
-      }, 3000);
+      }, 500);
     } else if (isGolden) {
       // For golden boxes, just show gift reveal (golden reveal already shown on click)
       setTimeout(() => {
