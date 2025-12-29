@@ -53,7 +53,7 @@ const GoldenBoxReveal = ({ isOpen, onClose }: GoldenBoxRevealProps) => {
 
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
-      <DialogContent className="sm:max-w-md bg-gradient-to-br from-box-gold via-christmas-gold-light to-box-gold border-4 border-christmas-gold-light shadow-2xl shadow-accent/50">
+      <DialogContent className="sm:max-w-lg bg-gradient-to-br from-box-gold via-horse-gold-light to-box-gold border-4 border-horse-gold-light shadow-2xl shadow-accent/50">
         <div className="flex flex-col items-center justify-center space-y-6 py-8">
           <div className="relative">
             <Trophy className="w-24 h-24 text-accent-foreground animate-bounce" />
