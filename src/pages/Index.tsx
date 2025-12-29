@@ -132,21 +132,23 @@ const Index = () => {
     .map(box => box.gift);
 
   return (
-    <div className="min-h-screen w-full flex flex-col bg-gradient-to-br from-background via-horse-crimson/20 to-background relative overflow-hidden">
-      {/* Fire/Flame decorations for Year of the Horse */}
+    <div className="min-h-screen w-full flex flex-col bg-[radial-gradient(ellipse_at_top,_hsl(25,30%,12%)_0%,_hsl(15,25%,6%)_50%,_hsl(10,20%,4%)_100%)] relative overflow-hidden">
+      {/* Elegant ambient glow effects */}
       <div className="absolute inset-0 pointer-events-none">
-        <Flame className="absolute top-[10%] left-[15%] w-8 h-8 text-horse-gold/40 animate-float" />
-        <Flame className="absolute top-[20%] right-[20%] w-6 h-6 text-horse-red/30 animate-float" style={{ animationDelay: "1s" }} />
-        <Flame className="absolute top-[60%] left-[10%] w-10 h-10 text-horse-gold/35 animate-float" style={{ animationDelay: "2s" }} />
-        <Flame className="absolute top-[70%] right-[15%] w-7 h-7 text-horse-red/40 animate-float" style={{ animationDelay: "1.5s" }} />
+        <div className="absolute top-0 left-1/4 w-96 h-96 bg-horse-crimson/10 rounded-full blur-3xl" />
+        <div className="absolute bottom-0 right-1/4 w-80 h-80 bg-horse-gold/8 rounded-full blur-3xl" />
+        <Flame className="absolute top-[8%] left-[12%] w-6 h-6 text-horse-gold/25 animate-float" />
+        <Flame className="absolute top-[15%] right-[18%] w-5 h-5 text-horse-red/20 animate-float" style={{ animationDelay: "1s" }} />
+        <Flame className="absolute top-[65%] left-[8%] w-7 h-7 text-horse-gold/20 animate-float" style={{ animationDelay: "2s" }} />
+        <Flame className="absolute top-[72%] right-[12%] w-5 h-5 text-horse-red/25 animate-float" style={{ animationDelay: "1.5s" }} />
       </div>
 
       {/* Header */}
       <header className="py-6 px-8 text-center relative z-10">
-        <h1 className="text-5xl font-bold text-horse-gold mb-2 drop-shadow-lg">
+        <h1 className="text-5xl font-bold bg-gradient-to-r from-horse-gold via-horse-gold-light to-horse-gold bg-clip-text text-transparent mb-2 drop-shadow-lg">
           🐴 61315 GAMELAB 어드벤트 캘린더 🐴
         </h1>
-        <p className="text-xl text-foreground/80">
+        <p className="text-xl text-horse-cream/70 tracking-wide">
           상자를 열고 퀴즈를 풀어 선물을 받으세요!
         </p>
       </header>
