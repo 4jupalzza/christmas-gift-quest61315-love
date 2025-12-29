@@ -63,7 +63,7 @@ const GoldenBoxReveal = ({ isOpen, onClose }: GoldenBoxRevealProps) => {
             <Sparkles className="absolute top-1/2 -left-4 w-6 h-6 text-accent-foreground animate-pulse" style={{ animationDelay: "0.75s" }} />
           </div>
           <h2 className="text-4xl font-bold text-accent-foreground animate-bounce drop-shadow-lg text-center">
-            🎉 특별한 골드박스를 발견했습니다! 🎉
+            🎉 골드박스를 발견했습니다! 🎉
           </h2>
           <p className="text-xl font-semibold text-accent-foreground text-center">
             더 어려운 문제와 더 큰 선물이 기다리고 있습니다!
