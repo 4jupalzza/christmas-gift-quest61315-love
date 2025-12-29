@@ -23,7 +23,7 @@ const GiftReveal = ({ gift, isOpen, onClose, isGolden = false, isSpecial = false
       )}>
         <div className="flex flex-col items-center justify-center space-y-6 py-8">
           {isSpecial ? (
-            <Diamond className="w-20 h-20 text-platinum-dark animate-bounce" />
+            <span className="text-7xl animate-bounce">💎</span>
           ) : isGolden ? (
             <Trophy className="w-20 h-20 text-accent-foreground animate-bounce" />
           ) : (
