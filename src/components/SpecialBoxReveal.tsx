@@ -53,7 +53,7 @@ const SpecialBoxReveal = ({ isOpen, onClose }: SpecialBoxRevealProps) => {
 
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
-      <DialogContent className="sm:max-w-lg bg-gradient-to-br from-platinum via-platinum-light to-platinum border-4 border-platinum-light shadow-2xl shadow-platinum/50">
+      <DialogContent className="sm:max-w-xl bg-gradient-to-br from-platinum via-platinum-light to-platinum border-4 border-platinum-light shadow-2xl shadow-platinum/50">
         <div className="flex flex-col items-center justify-center space-y-6 py-8">
           <div>
             <Diamond className="w-24 h-24 text-platinum-dark animate-bounce" />
