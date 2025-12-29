@@ -102,13 +102,17 @@ const QuizDialog = ({ box, isOpen, onClose, onCorrect }: QuizDialogProps) => {
   const hasBgm1 = box?.id === 29;
   const hasBgm2 = box?.id === 30;
   return (
-    <Dialog open={isOpen} onOpenChange={handleClose}>
-      <DialogContent className={cn(
-        "sm:max-w-md border-4",
-        isGolden 
-          ? "bg-gradient-to-br from-box-gold via-christmas-gold-light to-box-gold border-christmas-gold-light shadow-2xl shadow-accent/50" 
-          : "bg-card border-border"
-      )}>
+    <Dialog open={isOpen}>
+      <DialogContent 
+        className={cn(
+          "sm:max-w-md border-4 [&>button]:hidden",
+          isGolden 
+            ? "bg-gradient-to-br from-box-gold via-horse-gold-light to-box-gold border-horse-gold-light shadow-2xl shadow-accent/50" 
+            : "bg-card border-border"
+        )}
+        onInteractOutside={(e) => e.preventDefault()}
+        onEscapeKeyDown={(e) => e.preventDefault()}
+      >
         <DialogHeader>
           <DialogTitle className={cn(
             "flex items-center gap-2 text-2xl",
