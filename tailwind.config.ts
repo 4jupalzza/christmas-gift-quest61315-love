@@ -50,8 +50,10 @@ export default {
         horse: {
           red: "hsl(var(--horse-red))",
           crimson: "hsl(var(--horse-crimson))",
+          burgundy: "hsl(var(--horse-burgundy))",
           gold: "hsl(var(--horse-gold))",
           "gold-light": "hsl(var(--horse-gold-light))",
+          bronze: "hsl(var(--horse-bronze))",
           cream: "hsl(var(--horse-cream))",
         },
         box: {
