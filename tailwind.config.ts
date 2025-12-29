@@ -61,6 +61,11 @@ export default {
           "gold-hover": "hsl(var(--box-gold-hover))",
           opened: "hsl(var(--box-opened))",
         },
+        platinum: {
+          DEFAULT: "hsl(var(--platinum))",
+          light: "hsl(var(--platinum-light))",
+          dark: "hsl(var(--platinum-dark))",
+        },
       },
       borderRadius: {
         lg: "var(--radius)",
