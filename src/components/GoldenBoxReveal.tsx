@@ -52,8 +52,12 @@ const GoldenBoxReveal = ({ isOpen, onClose }: GoldenBoxRevealProps) => {
   }, [isOpen]);
 
   return (
-    <Dialog open={isOpen} onOpenChange={onClose}>
-      <DialogContent className="sm:max-w-lg bg-gradient-to-br from-box-gold via-horse-gold-light to-box-gold border-4 border-horse-gold-light shadow-2xl shadow-accent/50">
+    <Dialog open={isOpen}>
+      <DialogContent 
+        className="sm:max-w-lg bg-gradient-to-br from-box-gold via-horse-gold-light to-box-gold border-4 border-horse-gold-light shadow-2xl shadow-accent/50 [&>button]:hidden"
+        onInteractOutside={(e) => e.preventDefault()}
+        onEscapeKeyDown={(e) => e.preventDefault()}
+      >
         <div className="flex flex-col items-center justify-center space-y-6 py-8">
           <div>
             <Trophy className="w-24 h-24 text-accent-foreground animate-bounce" />
