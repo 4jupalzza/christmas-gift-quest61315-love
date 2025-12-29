@@ -32,7 +32,17 @@ const Index = () => {
     if (state?.isOpened) return;
     
     setSelectedBox(box);
-    setIsQuizOpen(true);
+    
+    // Show golden box reveal first if it's golden
+    if (box.isGolden) {
+      setIsGoldenReveal(true);
+      setTimeout(() => {
+        setIsGoldenReveal(false);
+        setIsQuizOpen(true);
+      }, 2500);
+    } else {
+      setIsQuizOpen(true);
+    }
   };
 
   const handleCorrectAnswer = (gift: string) => {
@@ -96,16 +106,11 @@ const Index = () => {
         setIsGiftOpen(true);
       }, 3000);
     } else if (isGolden) {
-      // Show golden box reveal first if it's golden
+      // For golden boxes, just show gift reveal (golden reveal already shown on click)
       setTimeout(() => {
-        setIsGoldenReveal(true);
-      }, 500);
-      
-      setTimeout(() => {
-        setIsGoldenReveal(false);
         setRevealedGift(gift);
         setIsGiftOpen(true);
-      }, 3000);
+      }, 500);
     } else {
       // Show gift reveal directly for regular boxes
       setTimeout(() => {
