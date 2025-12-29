@@ -139,10 +139,10 @@ const QuizDialog = ({ box, isOpen, onClose, onCorrect }: QuizDialogProps) => {
               : "bg-secondary"
           )}>
             <p className={cn(
-              "text-lg font-medium",
+              "text-lg font-medium whitespace-pre-line",
               isGolden ? "text-accent-foreground" : "text-secondary-foreground"
             )}>
-              {box?.question}
+              {box?.question.replace(/\(/g, '\n(')}
             </p>
           </div>
           
