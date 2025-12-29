@@ -142,7 +142,7 @@ const QuizDialog = ({ box, isOpen, onClose, onCorrect }: QuizDialogProps) => {
               "text-lg font-medium whitespace-pre-line",
               isGolden ? "text-accent-foreground" : "text-secondary-foreground"
             )}>
-              {box?.question.replace(/\(/g, '\n(')}
+              {box?.question.replace(/([가-힣?!])(\()/g, '$1\n$2')}
             </p>
           </div>
           
