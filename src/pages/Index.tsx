@@ -22,9 +22,16 @@ const Index = () => {
 
   // Initialize and shuffle boxes on mount
   useEffect(() => {
-    const shuffled = [...boxesData].sort(() => Math.random() - 0.5) as Box[];
-    setBoxes(shuffled);
-    setBoxStates(shuffled.map(box => ({ id: box.id, isOpened: false })));
+    const regularBoxes = boxesData.filter(box => !box.isSpecial);
+    const specialBoxes = boxesData.filter(box => box.isSpecial);
+    
+    // Shuffle regular boxes, then append special boxes at the end
+    const shuffledRegular = [...regularBoxes].sort(() => Math.random() - 0.5);
+    const shuffledSpecial = [...specialBoxes].sort(() => Math.random() - 0.5);
+    const ordered = [...shuffledRegular, ...shuffledSpecial] as Box[];
+    
+    setBoxes(ordered);
+    setBoxStates(ordered.map(box => ({ id: box.id, isOpened: false })));
   }, []);
 
   const handleBoxClick = (box: Box) => {
