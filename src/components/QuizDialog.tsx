@@ -99,7 +99,8 @@ const QuizDialog = ({ box, isOpen, onClose, onCorrect }: QuizDialogProps) => {
   };
 
   const isGolden = box?.isGolden || false;
-
+  const hasBgm1 = box?.id === 29;
+  const hasBgm2 = box?.id === 30;
   return (
     <Dialog open={isOpen} onOpenChange={handleClose}>
       <DialogContent className={cn(
@@ -141,43 +142,48 @@ const QuizDialog = ({ box, isOpen, onClose, onCorrect }: QuizDialogProps) => {
             </p>
           </div>
           
-          {/* BGM Controls */}
-          <div className="flex gap-2">
-            <Button
-              variant="outline"
-              size="sm"
-              onClick={() => toggleBgm(1)}
-              className={cn(
-                "flex-1 gap-2",
-                playingBgm === 1 
-                  ? "bg-horse-gold/20 border-horse-gold text-horse-gold" 
-                  : "border-border text-foreground hover:bg-secondary"
-              )}
-            >
-              {playingBgm === 1 ? <Square className="w-4 h-4" /> : <Play className="w-4 h-4" />}
-              <Music className="w-4 h-4" />
-              BGM 1
-            </Button>
-            <Button
-              variant="outline"
-              size="sm"
-              onClick={() => toggleBgm(2)}
-              className={cn(
-                "flex-1 gap-2",
-                playingBgm === 2 
-                  ? "bg-horse-gold/20 border-horse-gold text-horse-gold" 
-                  : "border-border text-foreground hover:bg-secondary"
-              )}
-            >
-              {playingBgm === 2 ? <Square className="w-4 h-4" /> : <Play className="w-4 h-4" />}
-              <Music className="w-4 h-4" />
-              BGM 2
-            </Button>
-          </div>
+          {/* BGM Controls - only for BGM quiz boxes */}
+          {hasBgm1 && (
+            <>
+              <Button
+                variant="outline"
+                size="sm"
+                onClick={() => toggleBgm(1)}
+                className={cn(
+                  "w-full gap-2",
+                  playingBgm === 1 
+                    ? "bg-horse-gold/20 border-horse-gold text-horse-gold" 
+                    : "border-border text-foreground hover:bg-secondary"
+                )}
+              >
+                {playingBgm === 1 ? <Square className="w-4 h-4" /> : <Play className="w-4 h-4" />}
+                <Music className="w-4 h-4" />
+                {playingBgm === 1 ? "BGM 1 정지" : "BGM 1 재생"}
+              </Button>
+              <audio ref={bgm1Ref} src="/audio/bgm1.mp3" />
+            </>
+          )}
           
-          {/* Hidden audio elements */}
-          <audio ref={bgm1Ref} src="/audio/bgm1.mp3" />
-          <audio ref={bgm2Ref} src="/audio/bgm2.mp3" />
+          {hasBgm2 && (
+            <>
+              <Button
+                variant="outline"
+                size="sm"
+                onClick={() => toggleBgm(2)}
+                className={cn(
+                  "w-full gap-2",
+                  playingBgm === 2 
+                    ? "bg-horse-gold/20 border-horse-gold text-horse-gold" 
+                    : "border-border text-foreground hover:bg-secondary"
+                )}
+              >
+                {playingBgm === 2 ? <Square className="w-4 h-4" /> : <Play className="w-4 h-4" />}
+                <Music className="w-4 h-4" />
+                {playingBgm === 2 ? "BGM 2 정지" : "BGM 2 재생"}
+              </Button>
+              <audio ref={bgm2Ref} src="/audio/bgm2.mp3" />
+            </>
+          )}
           
           {box?.type === "객관식" ? (
             <div className="space-y-2">
