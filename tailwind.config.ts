@@ -47,12 +47,12 @@ export default {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
-        christmas: {
-          red: "hsl(var(--christmas-red))",
-          green: "hsl(var(--christmas-green))",
-          gold: "hsl(var(--christmas-gold))",
-          "gold-light": "hsl(var(--christmas-gold-light))",
-          snow: "hsl(var(--christmas-snow))",
+        horse: {
+          red: "hsl(var(--horse-red))",
+          crimson: "hsl(var(--horse-crimson))",
+          gold: "hsl(var(--horse-gold))",
+          "gold-light": "hsl(var(--horse-gold-light))",
+          cream: "hsl(var(--horse-cream))",
         },
         box: {
           regular: "hsl(var(--box-regular))",
