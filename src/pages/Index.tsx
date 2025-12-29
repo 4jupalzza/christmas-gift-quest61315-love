@@ -22,32 +22,44 @@ const Index = () => {
 
   // Initialize and shuffle boxes on mount
   useEffect(() => {
-    const regularBoxes = boxesData.filter(box => !box.isSpecial);
-    const specialBoxes = boxesData.filter(box => box.isSpecial);
-    
-    // Shuffle regular boxes, then append special boxes at the end
-    const shuffledRegular = [...regularBoxes].sort(() => Math.random() - 0.5);
-    const shuffledSpecial = [...specialBoxes].sort(() => Math.random() - 0.5);
-    const ordered = [...shuffledRegular, ...shuffledSpecial] as Box[];
-    
-    setBoxes(ordered);
-    setBoxStates(ordered.map(box => ({ id: box.id, isOpened: false })));
+    const shuffled = [...boxesData].sort(() => Math.random() - 0.5) as Box[];
+    setBoxes(shuffled);
+    setBoxStates(shuffled.map(box => ({ id: box.id, isOpened: false })));
   }, []);
+
+  // Count opened boxes
+  const openedCount = boxStates.filter(s => s.isOpened).length;
 
   const handleBoxClick = (box: Box) => {
     const state = boxStates.find(s => s.id === box.id);
     if (state?.isOpened) return;
     
-    setSelectedBox(box);
+    let actualBox = box;
+    
+    // If special box is clicked within first 10 opens, swap with an unopened regular box
+    if (box.isSpecial && openedCount < 10) {
+      const unopenedRegularBoxes = boxes.filter(b => {
+        const bState = boxStates.find(s => s.id === b.id);
+        return !b.isSpecial && !bState?.isOpened;
+      });
+      
+      if (unopenedRegularBoxes.length > 0) {
+        // Pick a random unopened regular box
+        const randomIndex = Math.floor(Math.random() * unopenedRegularBoxes.length);
+        actualBox = unopenedRegularBoxes[randomIndex];
+      }
+    }
+    
+    setSelectedBox(actualBox);
     
     // Show golden box reveal first if it's golden
-    if (box.isGolden) {
+    if (actualBox.isGolden) {
       setIsGoldenReveal(true);
       setTimeout(() => {
         setIsGoldenReveal(false);
         setIsQuizOpen(true);
       }, 2500);
-    } else if (box.isSpecial) {
+    } else if (actualBox.isSpecial) {
       // Show special box reveal first if it's special
       setIsSpecialReveal(true);
       setTimeout(() => {
