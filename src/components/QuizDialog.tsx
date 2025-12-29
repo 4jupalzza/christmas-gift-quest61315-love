@@ -1,9 +1,9 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Box } from "@/types/box";
-import { Gift, Sparkles } from "lucide-react";
+import { Gift, Sparkles, Play, Square, Music } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 interface QuizDialogProps {
@@ -17,6 +17,48 @@ const QuizDialog = ({ box, isOpen, onClose, onCorrect }: QuizDialogProps) => {
   const [answer, setAnswer] = useState("");
   const [selectedOption, setSelectedOption] = useState<number | null>(null);
   const [error, setError] = useState(false);
+  const [playingBgm, setPlayingBgm] = useState<1 | 2 | null>(null);
+  
+  const bgm1Ref = useRef<HTMLAudioElement | null>(null);
+  const bgm2Ref = useRef<HTMLAudioElement | null>(null);
+
+  const stopAllBgm = () => {
+    if (bgm1Ref.current) {
+      bgm1Ref.current.pause();
+      bgm1Ref.current.currentTime = 0;
+    }
+    if (bgm2Ref.current) {
+      bgm2Ref.current.pause();
+      bgm2Ref.current.currentTime = 0;
+    }
+    setPlayingBgm(null);
+  };
+
+  const toggleBgm = (bgmNumber: 1 | 2) => {
+    const audioRef = bgmNumber === 1 ? bgm1Ref : bgm2Ref;
+    const otherRef = bgmNumber === 1 ? bgm2Ref : bgm1Ref;
+    
+    // Stop the other BGM
+    if (otherRef.current) {
+      otherRef.current.pause();
+      otherRef.current.currentTime = 0;
+    }
+    
+    if (playingBgm === bgmNumber) {
+      // Stop current BGM
+      if (audioRef.current) {
+        audioRef.current.pause();
+        audioRef.current.currentTime = 0;
+      }
+      setPlayingBgm(null);
+    } else {
+      // Play this BGM
+      if (audioRef.current) {
+        audioRef.current.play();
+      }
+      setPlayingBgm(bgmNumber);
+    }
+  };
 
   const handleSubmit = () => {
     if (!box) return;
@@ -49,6 +91,7 @@ const QuizDialog = ({ box, isOpen, onClose, onCorrect }: QuizDialogProps) => {
   };
 
   const handleClose = () => {
+    stopAllBgm();
     setAnswer("");
     setSelectedOption(null);
     setError(false);
@@ -72,7 +115,7 @@ const QuizDialog = ({ box, isOpen, onClose, onCorrect }: QuizDialogProps) => {
           )}>
             {isGolden && <Sparkles className="w-6 h-6 animate-pulse" />}
             <Gift className="w-6 h-6" />
-            {isGolden ? "⭐ 골드 박스 ⭐" : "크리스마스 퀴즈"}
+            {isGolden ? "⭐ 골드 박스 ⭐" : "신년 퀴즈"}
             {isGolden && <Sparkles className="w-6 h-6 animate-pulse" />}
           </DialogTitle>
           <DialogDescription className={cn(
@@ -97,6 +140,44 @@ const QuizDialog = ({ box, isOpen, onClose, onCorrect }: QuizDialogProps) => {
               {box?.question}
             </p>
           </div>
+          
+          {/* BGM Controls */}
+          <div className="flex gap-2">
+            <Button
+              variant="outline"
+              size="sm"
+              onClick={() => toggleBgm(1)}
+              className={cn(
+                "flex-1 gap-2",
+                playingBgm === 1 
+                  ? "bg-horse-gold/20 border-horse-gold text-horse-gold" 
+                  : "border-border text-foreground hover:bg-secondary"
+              )}
+            >
+              {playingBgm === 1 ? <Square className="w-4 h-4" /> : <Play className="w-4 h-4" />}
+              <Music className="w-4 h-4" />
+              BGM 1
+            </Button>
+            <Button
+              variant="outline"
+              size="sm"
+              onClick={() => toggleBgm(2)}
+              className={cn(
+                "flex-1 gap-2",
+                playingBgm === 2 
+                  ? "bg-horse-gold/20 border-horse-gold text-horse-gold" 
+                  : "border-border text-foreground hover:bg-secondary"
+              )}
+            >
+              {playingBgm === 2 ? <Square className="w-4 h-4" /> : <Play className="w-4 h-4" />}
+              <Music className="w-4 h-4" />
+              BGM 2
+            </Button>
+          </div>
+          
+          {/* Hidden audio elements */}
+          <audio ref={bgm1Ref} src="/audio/bgm1.mp3" />
+          <audio ref={bgm2Ref} src="/audio/bgm2.mp3" />
           
           {box?.type === "객관식" ? (
             <div className="space-y-2">
